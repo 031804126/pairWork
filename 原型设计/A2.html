@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拼图原型设计</title>
+    <script src="A2.js"></script>
+    <link href="A2.css" rel="stylesheet"/>
+</head>
+<body style="padding: 0;margin:0" onkeydown="onKeyDown(event)">
+    <div class="gameContainer">
+        <div class="gameMenu">
+            <div class="menuItem">
+                <p class="menuTips">选择图片</p>
+                <div class="chooseContent">
+                    <p class="menuOption" onclick="onChooseImage(0)">可爱的小黄鸭</p>
+                    <p class="menuOption" onclick="onChooseImage(1)">贪婪的国王</p>
+                    <p class="menuOption" onclick="onChooseImage(2)">凶猛的恐龙</p>
+                </div>
+            </div>
+            <div class="menuItem">
+                <p class="menuTips">选择难度</p>
+                <div class="chooseContent">
+                    <p class="menuOption" onclick="onChooseDifficulty(3)">3*3</p>
+                    <p class="menuOption" onclick="onChooseDifficulty(4)">4*4</p>
+                    <p class="menuOption" onclick="onChooseDifficulty(5)">5*5</p>
+                </div>
+            </div>
+            <div class="menuItem" id="tips" onclick="onTips()">
+                <p class="menuTips">提示</p>
+            </div>
+            <div class="menuItem" onclick="opening()">
+                <p class="menuTips">重新开始</p>
+            </div>
+        </div>
+        <div class="gameContent">
+            <div class="gameRegion"></div>
+            <div>
+                <img src="./img/duck.jpg" id="tipImg"/>
+                <p id="score">当前操作次数：0</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload=function(){
+        image=new Image();
+        imagePath="./img/duck.jpg";
+        image.src=imagePath;
+        image.onload=function() {
+            singleWidth=-1*image.width/difficulty;
+            singleHeight=-1*image.height/difficulty;
+            opening();
+        }
+    }
+</script>
+</html>
